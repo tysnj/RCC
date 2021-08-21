@@ -2,29 +2,54 @@ import React, { useState } from 'react';
 import './OrderedList1.css';
 
 const OrderedList1 = () => {
-  const [data, setData] = useState([])
-  const [item, setItem] = useState('')
+  const [list, setList] = useState([])
+  const [newItem, setNewItem] = useState('')
   const [desc, setDesc] = useState(false)
 
-  const handleSort = () => {
+  const handleSort = (data) => {
     if (!desc) {
-      return setData(data.sort((a,b) => a - b))
-    } 
-      return setData(data.sort((a,b) => b - a))
+      return data.sort((a, b) => {
+        if (a < b) {
+          return -1
+        } else {
+          return 1
+        }
+      })
+    } else {
+      return data.sort((a, b) => {
+        if (a > b) {
+          return -1
+        } else {
+          return 1
+        }
+      })
+    }
+  }
+
+  const changeSort = () => {
+    return list.reverse()
   }
 
   const handleSubmit = (e) => {
-    if (e.key === 'Enter' && item.length) {
-      setData([...data, item])
-      setItem('')
+    if (e.key === 'Enter' && newItem.length) {
+      setList(handleSort([...list, newItem]))   
+      setNewItem('')
     } 
+  }
+
+  const mapItems = () => {
+    return list.map(item => (
+      <li key={`id${item}`}>
+        {item}
+      </li>
+    ))
   }
 
   return (
     <div className='ordered-list-container'>
       <input
-        value={item}
-        onChange={(e) => setItem(e.target.value)}
+        value={newItem}
+        onChange={(e) => setNewItem(e.target.value)}
         onKeyDown={(e) => handleSubmit(e)}
       />
       
@@ -32,7 +57,7 @@ const OrderedList1 = () => {
         className='sort-list-button'
         onClick={() => {
           setDesc(!desc)
-          handleSort()
+          setList(changeSort())
         }}
       >{!desc ? '⬇️' : '⬆️'}
       </button>
@@ -40,11 +65,17 @@ const OrderedList1 = () => {
       <button
         className='clear-list-button' 
         onClick={() => {
-          setItem('')
-          setData([])
+          setList([])
+          setNewItem('')
         }}
       >CL
       </button>
+      
+      {!!list.length &&       
+        <ul>
+          {mapItems()}
+       </ul> 
+      }
 
     </div>
   )
