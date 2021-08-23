@@ -1,6 +1,6 @@
 # REACT Coding Challenge
 
-[Click HERE to check it out!](tmcnutt-veritone.surge.sh)
+[Click HERE to check it out!](https://tmcnutt-veritone.surge.sh/)
 
 ## Overview
 
