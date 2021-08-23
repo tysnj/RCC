@@ -1,5 +1,6 @@
 # REACT Coding Challenge
 
+
 ## Table of Contents
 
 * [Overview](#overview)
@@ -9,14 +10,18 @@
 * [Author](#author)
 * [Technologies](#technologies)
 
+
 ## Overview
 The challenge was to create an OrderedList component which implements an alphabetically sorted list. Including one button enabling the user to sort either in ascending or descending order, and a second button to permit the list to be cleared.
+
+
 ## Installation
 
 1. `git clone` this [repo](https://github.com/tysnj/RCC) (`git clone git@github.com:tysnj/RCC.git`)
 2. `cd` into project directory (`cd RCC`)
 3. Run `npm i` to install the project dependencies
 4. Run `npm start` to begin the development server & open the app in a browser window (on http://localhost:3000/)
+
 
 ## Walkthrough
 
@@ -27,21 +32,17 @@ The challenge was to create an OrderedList component which implements an alphabe
 
 ## Demo GIFs
 <!-- <img src='' width='400'> -->
-![GIF showing component actions](./docs/formsubmission.gif)
+![GIF showing component actions](./docs/RCC.gif)
                    
 
 ## Learning Goals
-- 
+Developed for a take home technical challenge, the work on this project was strictly time-boxed to ~8 hours. Building this app was an exercise in developing an MVP with a limited amount of time.
 
 
 ## Project Progression
+Once a brute force solution was developed, the component received some basic styling with breakpoints for responsive design. Then, integration tests were created to be validated during code refactor/solution optimization (these can be ran with `npx cypress open`). 
 
-Be
-
-
-## Reflections
-
-All 
+If I were to continue working on this component, I would focus on further optimization of sorting algorithms to accommodate larger data sets.
 
 
 ## Authors
