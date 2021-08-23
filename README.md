@@ -1,6 +1,6 @@
 # REACT Coding Challenge
 
-[Click HERE to check it out!](https://tmcnutt-veritone.surge.sh/){:target="_blank"}
+<a href="https://tmcnutt-veritone.surge.sh/" target="_blank">Check it out here!</a>
 
 ## Overview
 
