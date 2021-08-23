@@ -1,5 +1,5 @@
 import React from 'react';
-import OrderedList from './components/OrderedList/OrderedList';
+import OrderedList from '../OrderedList/OrderedList';
 import './App.css';
 
 const App = () => {
