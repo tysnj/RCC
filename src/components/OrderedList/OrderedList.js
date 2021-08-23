@@ -1,45 +1,54 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './OrderedList.css';
 
+const useStickyState = (defaultValue, key) => {
+  const [value, setValue] = useState(() => {
+    const stickyValue = window.localStorage.getItem(key);
+    return stickyValue !== null
+      ? JSON.parse(stickyValue)
+      : defaultValue;
+  });
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+  return [value, setValue];
+}
+
 const OrderedList = () => {
-  const [list, setList] = useState([])
+  const [list, setList] = useStickyState({}, 'currentList')
   const [newItem, setNewItem] = useState('')
-  const [desc, setDesc] = useState(false)
+  const [isDesc, setIsDesc] = useStickyState(false, 'isDesc')
   const inputField = useRef(null);
 
   useEffect(() => {
     inputField.current.focus()
-  },[desc, list])
-  
-  const handleSort = (data) => {
-    if (!desc) {
-      return data.sort((a, b) => {
-        return a === b ? 0 : a > b ? 1 : -1;
-      })
-    } else {
-      return data.sort((a, b) => {
-        return a === b ? 0 : a < b ? 1 : -1;
-      })
-    }
-  }
-
-  const reverseSort = (data) => {
-    return data.reverse()
-  }
+  },[isDesc, list])
 
   const handleSubmit = (e) => {
     if (e.key === 'Enter' && newItem.length) {
-      setList(handleSort([...list, newItem]))   
+      setList({...list, [`item-${Object.keys(list).length+1}`]: newItem})   
       setNewItem('')
     } 
   }
 
-  const mapItems = () => {
-    return list.map((item, index) => (
-      <li className='list-item' key={`id-${item}-${index}`}>
-        {item}
-      </li>
-    ))
+  const mapListItems = () => {
+    if (isDesc) {
+      return Object.entries(list)
+      .sort((a, b) => a[1].toLowerCase() > b[1].toLowerCase() ? -1 : 1)
+      .map(item => (
+        <li className='list-item' key={item[0]}>
+          {item[1]}
+        </li>
+      ))
+    } else {
+      return Object.entries(list)
+      .sort((a, b) => a[1].toLowerCase() < b[1].toLowerCase() ? -1 : 1)
+      .map(item => (
+        <li className='list-item' key={item[0]}>
+          {item[1]}
+        </li>
+      ))
+    }
   }
 
   return (
@@ -59,17 +68,16 @@ const OrderedList = () => {
           <button 
             className='sort-list-button'
             onClick={() => {
-              setDesc(!desc)
-              setList(reverseSort(list))
+              setIsDesc(!isDesc)
             }}
-          >{!desc ? '↓' : '↑'}
+          >{isDesc ? '↑' : '↓'}
           </button>
         </span>
         <span className='button-wrapper'>
           <button
             className='clear-list-button' 
             onClick={() => {
-              setList([])
+              setList({})
               setNewItem('')
             }}
           >Clear List
@@ -77,9 +85,7 @@ const OrderedList = () => {
         </span>
       </div>
       <ul className='list-wrapper'>
-        {!!list.length &&       
-          mapItems()
-        }
+        {Object.keys(list).length > 0 && mapListItems()}
       </ul> 
     </div>
   )
