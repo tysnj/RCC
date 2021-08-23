@@ -12,19 +12,9 @@ const OrderedList = () => {
   },[desc, list])
   
   const handleSort = (data) => {
-    if (!desc) {
       return data.sort((a, b) => {
         return a === b ? 0 : a > b ? 1 : -1;
       })
-    } else {
-      return data.sort((a, b) => {
-        return a === b ? 0 : a < b ? 1 : -1;
-      })
-    }
-  }
-
-  const reverseSort = (data) => {
-    return data.reverse()
   }
 
   const handleSubmit = (e) => {
@@ -35,6 +25,17 @@ const OrderedList = () => {
   }
 
   const mapItems = () => {
+    if (desc) {
+      const temp = []
+      for (let i = list.length; i !== 0; i--) {
+        temp.push((
+          <li className='list-item' key={`${list[i-1]}-${i-1}`}>
+            {list[i-1]}
+          </li>
+        ))
+      }
+      return temp
+    }
     return list.map((item, index) => (
       <li className='list-item' key={`id-${item}-${index}`}>
         {item}
@@ -60,7 +61,6 @@ const OrderedList = () => {
             className='sort-list-button'
             onClick={() => {
               setDesc(!desc)
-              setList(reverseSort(list))
             }}
           >{!desc ? '↓' : '↑'}
           </button>
