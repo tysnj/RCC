@@ -1,18 +1,15 @@
 # REACT Coding Challenge
 
 
-## Table of Contents
-
-* [Overview](#overview)
-* [Installation](#installation)
-* [Walkthrough](#walkthrough)
-* [New Learning](#newlearning)
-* [Author](#author)
-* [Technologies](#technologies)
-
-
 ## Overview
-The challenge was to create an OrderedList component which implements an alphabetically sorted list. Including one button enabling the user to sort either in ascending or descending order, and a second button to permit the list to be cleared.
+
+OrderedList is a component which implements an alphabetically sorted list. Including one button which enables the user to sort either in ascending or descending order, and a second button to permit the list to be cleared.
+
+- After typing the new item, submit with the 'Enter' key.
+- Sort between ascending (↓) and descending (↑) order by clicking the sorting button.
+- Clear the list and text field by clicking the "Clear List" button
+
+![GIF showing component actions](./docs/RCC.gif)
 
 
 ## Installation
@@ -23,51 +20,7 @@ The challenge was to create an OrderedList component which implements an alphabe
 4. Run `npm start` to begin the development server & open the app in a browser window (on http://localhost:3000/)
 
 
-## Walkthrough
-
-- After typing something, submit new items with the 'Enter' key.
-- Sort between ascending (↓) and descending (↑) order by clicking the sorting button.
-- Clear the list and text field by clicking the "Clear List" button
-
-
-## Demo GIFs
-<!-- <img src='' width='400'> -->
-![GIF showing component actions](./docs/RCC.gif)
-                   
-
-## Learning Goals
-Developed for a take home technical challenge, the work on this project was strictly time-boxed to ~8 hours. Building this app was an exercise in developing an MVP with a limited amount of time.
-
-
-## Project Progression
-Once a brute force solution was developed, the component received some basic styling with breakpoints for responsive design. Then, integration tests were created to be validated during code refactor/solution optimization (these can be ran with `npx cypress open`). 
-
-If I were to continue working on this component, I would focus on further optimization of sorting algorithms to accommodate larger data sets.
-
-
-## Authors
-<table>
-    <tr>
-        <td> <a href="https://github.com/tysnj">Tyson McNutt</td>
-    </tr>
-    </tr>
-        <td><img src="https://avatars.githubusercontent.com/u/65634894?v=4" alt="T McNutt" width="125" height="auto" /></td>
-    </tr>
-</table>
-
-
 ## Technologies
-<table>
-    <tr>
-        <td>Framework</td>
-        <td>Functionality</td>
-        <td>Structure</td>
-        <td>Styling</td>
-    </tr>
-    </tr>
-        <td><img src="https://mildaintrainings.com/wp-content/uploads/2017/11/react-logo.png" alt="react" width="100" height="auto" /></td>
-        <td><img src="https://raw.githubusercontent.com/voodootikigod/logo.js/master/js.png" alt="javascript" width="100" height="auto" /></td>
-        <td><img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png" alt="html" width="100" height="auto" /></td>
-        <td><img src="https://www.pinclipart.com/picdir/middle/175-1759459_eng-a-med-kamel-frameworks-css-css-logo.png" alt="css" width="100" height="auto" /></td>
-    </tr>
-</table>
+
+- React, React Hooks
+- Cypress
