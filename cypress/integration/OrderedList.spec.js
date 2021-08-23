@@ -43,7 +43,7 @@ describe('OrderedList', () => {
   it('should allow clearing items', () => {
     cy.get('.input-field').type('apple{enter}')
     cy.get('.clear-list-button').click()
-    cy.get('.list-wrapper').children().should('have.length', 0)
+    cy.get('.list').children().should('have.length', 0)
   })
 
   it('should refocus input field after clearing items', () => {
