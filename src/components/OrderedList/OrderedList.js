@@ -1,38 +1,47 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './OrderedList.css';
 
-const useStickyState = (defaultValue, key) => {
-  const [value, setValue] = useState(() => {
-    const stickyValue = window.localStorage.getItem(key);
-    return stickyValue !== null
-      ? JSON.parse(stickyValue)
-      : defaultValue;
-  });
-  useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
-  return [value, setValue];
-}
-
 const OrderedList = () => {
+  const useStickyState = (defaultValue, key) => { // gets local storage
+    const [value, setValue] = useState(() => {
+      const stickyValue = window.localStorage.getItem(key);
+      return stickyValue !== null
+        ? JSON.parse(stickyValue)
+        : defaultValue;
+    });
+    useEffect(() => { // sets local storage
+      window.localStorage.setItem(key, JSON.stringify(value));
+    }, [key, value]);
+    return [value, setValue];
+  }
+  // state and ref
   const [list, setList] = useStickyState({}, 'currentList')
   const [newItem, setNewItem] = useState('')
   const [isDesc, setIsDesc] = useStickyState(false, 'isDesc')
   const inputField = useRef(null);
 
-  useEffect(() => {
+  useEffect(() => { // keeps input field in focus
     inputField.current.focus()
   },[isDesc, list])
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => setNewItem(e.target.value) // controls form
+
+  const handleSubmit = (e) => { // adds item to object store and resets input field
     if (e.key === 'Enter' && newItem.length) {
       setList({...list, [`item-${Object.keys(list).length+1}`]: newItem})   
       setNewItem('')
     } 
   }
 
+  const handleSort = () => setIsDesc(!isDesc) // toggles ascending/descending
+  
+  const handleClear = () => { // resets list and input field
+    setList({})
+    setNewItem('')
+  }
+
   const mapListItems = () => {
-    if (isDesc) {
+    if (isDesc) { // sorts descending
       return Object.entries(list)
       .sort((a, b) => a[1].toLowerCase() > b[1].toLowerCase() ? -1 : 1)
       .map(item => (
@@ -40,7 +49,7 @@ const OrderedList = () => {
           {item[1]}
         </li>
       ))
-    } else {
+    } else { // sorts ascending
       return Object.entries(list)
       .sort((a, b) => a[1].toLowerCase() < b[1].toLowerCase() ? -1 : 1)
       .map(item => (
@@ -60,33 +69,30 @@ const OrderedList = () => {
             placeholder='Press enter to submit item'
             value={newItem}
             ref={inputField}
-            onChange={(e) => setNewItem(e.target.value)}
+            onChange={(e) => handleChange(e)}
             onKeyDown={(e) => handleSubmit(e)}
           />
         </span>
         <span className='button-wrapper'>
           <button 
             className='sort-list-button'
-            onClick={() => {
-              setIsDesc(!isDesc)
-            }}
+            onClick={() => handleSort()}
           >{isDesc ? '↑' : '↓'}
           </button>
         </span>
         <span className='button-wrapper'>
           <button
             className='clear-list-button' 
-            onClick={() => {
-              setList({})
-              setNewItem('')
-            }}
+            onClick={() => handleClear()}
           >Clear List
           </button>
         </span>
       </div>
-      <ul className='list-wrapper'>
-        {Object.keys(list).length > 0 && mapListItems()}
-      </ul> 
+      <div className='list-wrapper'>
+        <ul className='list'>
+          {Object.keys(list).length > 0 && mapListItems()}
+        </ul> 
+      </div>
     </div>
   )
 }
