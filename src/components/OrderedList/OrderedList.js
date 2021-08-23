@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './OrderedList.css';
 
 const OrderedList = () => {
   const [list, setList] = useState([])
   const [newItem, setNewItem] = useState('')
   const [desc, setDesc] = useState(false)
+  const inputField = useRef(null);
 
+  useEffect(() => {
+    inputField.current.focus()
+  },[desc, list])
+  
   const handleSort = (data) => {
     if (!desc) {
       return data.sort((a, b) => {
@@ -45,6 +50,7 @@ const OrderedList = () => {
             className='input-field'
             placeholder='Press enter to submit item'
             value={newItem}
+            ref={inputField}
             onChange={(e) => setNewItem(e.target.value)}
             onKeyDown={(e) => handleSubmit(e)}
           />
@@ -70,11 +76,11 @@ const OrderedList = () => {
           </button>
         </span>
       </div>
-      {!!list.length &&       
-        <ul className='list-wrapper'>
-          {mapItems()}
-       </ul> 
-      }
+      <ul className='list-wrapper'>
+        {!!list.length &&       
+          mapItems()
+        }
+      </ul> 
     </div>
   )
 }
