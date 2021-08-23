@@ -1,9 +1,12 @@
 import React from 'react';
-import OrderedList1 from './components/OrderedList1/OrderedList1';
+import OrderedList from './components/OrderedList/OrderedList';
+import './App.css';
 
 const App = () => {
   return (
-    <OrderedList1/>
+    <main className='main'>
+      <OrderedList/>
+    </main>
     )
 }
 
