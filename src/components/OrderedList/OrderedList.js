@@ -43,7 +43,7 @@ const OrderedList = () => {
         <span className='input-wrapper'>
           <input
             className='input-field'
-            placeholder='Use enter to submit item'
+            placeholder='Press enter to submit item'
             value={newItem}
             onChange={(e) => setNewItem(e.target.value)}
             onKeyDown={(e) => handleSubmit(e)}

@@ -1,5 +1,6 @@
+/* Desktop size */
 .ordered-list-container{
-  height: 400px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -8,9 +9,10 @@
 
 .modifier-wrapper{
   width: 100%;
+  height: 55px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-content: center;
 }
 
@@ -19,13 +21,13 @@
 }
 
 .input-field{
-  width: 250px;
-  height: 20px;
-  font-size: 16px;
+  width: 400px;
+  height: 35px;
+  font-size: 24px;
 }
 
 .button-wrapper{
-  height: 20px;
+  height: 100%;
   padding: 5px;
 }
 
@@ -38,7 +40,6 @@
   background-color: #2B78D7;  
 }
 
-
 .clear-list-button{
   background-color: #F03A18;
 }
@@ -46,16 +47,147 @@
 .sort-list-button,
 .clear-list-button{
   color: white;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 23px;
+  font-weight: 600;
 }
 
+.sort-list-button:hover,
+.clear-list-button{
+  cursor: pointer;
+}
 
 .list-wrapper{
-  align-self: start;
+  margin-top: 10px;
+  padding: 5px;
+  width: 80%;
 }
 
-
 .list-item{
+  font-size: 24px;
+}
 
+/* Tablet size */
+@media all and (max-width: 1025px) {
+  .ordered-list-container{
+    height: 500px;
+  }
+  
+  .modifier-wrapper{
+    height: 50px;
+    align-items: baseline;
+  }
+  
+  .input-wrapper{
+    padding: 4px;
+  }
+  
+  .input-field{
+    height: 35px;
+    font-size: 24px;
+  }
+  
+  .button-wrapper{
+    padding: 4px;
+  }
+  
+  .sort-list-button,
+  .clear-list-button{
+    font-size: 20px;
+    font-weight: 700;
+    height: 35px;
+
+  }
+  
+  .list-wrapper{
+    margin-top: 15px;
+    padding: 3px;
+    width: 75%;
+  }
+
+  .list-item{
+    font-size: 24px;
+  }
+}
+
+/* Standard mobile size */
+@media all and (max-width: 550px) {
+  .ordered-list-container{
+    height: 300px;
+  }
+  
+  .modifier-wrapper{
+    height: 30px;
+  }
+  
+  .input-wrapper{
+    padding: 3px;
+  }
+  
+  .input-field{
+    width: 200px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .button-wrapper{
+    padding: 3px;
+  }
+  
+  .button-wrapper:hover{
+    border-bottom: 1px solid black; 
+  }
+  
+  .clear-list-button{
+    width: 85px;
+  }
+  
+  .sort-list-button,
+  .clear-list-button{
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .list-wrapper{
+    margin-top: 20px;
+    padding: 2px;
+    width: 70%;
+  }
+
+  .list-item{
+    font-size: 14px;
+  }
+}
+
+/* Slim mobile size */
+@media all and (max-width: 320px) {
+  .input-field{
+    width: 160px;
+    height: 35px;
+    font-size: 11px;
+  }
+  
+  .button-wrapper{
+    padding: 3px;
+    height: 40px;
+  }
+
+  .sort-list-button,
+  .clear-list-button{
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .clear-list-button{
+    width: 75px;
+  }
+
+  .list-wrapper{
+    margin-top: 25px;
+    padding: 2px;
+    width: 70%;
+  }
+  
+  .list-item{
+    font-size: 12px;
+  }
 }
