@@ -1,75 +1,72 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# REACT Coding Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+* [Overview](#overview)
+* [Installation](#installation)
+* [Walkthrough](#walkthrough)
+* [New Learning](#newlearning)
+* [Author](#author)
+* [Technologies](#technologies)
 
-In the project directory, you can run:
+## Overview
+The challenge was to create an OrderedList component which implements an alphabetically sorted list. Including one button enabling the user to sort either in ascending or descending order, and a second button to permit the list to be cleared.
+## Installation
 
-### `npm start`
+1. `git clone` this [repo](https://github.com/tysnj/RCC) (`git clone git@github.com:tysnj/RCC.git`)
+2. `cd` into project directory (`cd RCC`)
+3. Run `npm i` to install the project dependencies
+4. Run `npm start` to begin the development server & open the app in a browser window (on http://localhost:3000/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Walkthrough
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- After typing something, submit new items with the 'Enter' key.
+- Sort between ascending (↓) and descending (↑) order by clicking the sorting button.
+- Clear the list and text field by clicking the "Clear List" button
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Demo GIFs
+<!-- <img src='' width='400'> -->
+![GIF showing component actions](./docs/formsubmission.gif)
+                   
 
-### `npm run build`
+## Learning Goals
+- 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Progression
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Be
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Reflections
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+All 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Authors
+<table>
+    <tr>
+        <td> <a href="https://github.com/tysnj">Tyson McNutt</td>
+    </tr>
+    </tr>
+        <td><img src="https://avatars.githubusercontent.com/u/65634894?v=4" alt="T McNutt" width="125" height="auto" /></td>
+    </tr>
+</table>
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# RCC
-React Coding Challenge
->>>>>>> 548732ed67c462177eb5d1b338040ab994914373
+## Technologies
+<table>
+    <tr>
+        <td>Framework</td>
+        <td>Functionality</td>
+        <td>Structure</td>
+        <td>Styling</td>
+    </tr>
+    </tr>
+        <td><img src="https://mildaintrainings.com/wp-content/uploads/2017/11/react-logo.png" alt="react" width="100" height="auto" /></td>
+        <td><img src="https://raw.githubusercontent.com/voodootikigod/logo.js/master/js.png" alt="javascript" width="100" height="auto" /></td>
+        <td><img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png" alt="html" width="100" height="auto" /></td>
+        <td><img src="https://www.pinclipart.com/picdir/middle/175-1759459_eng-a-med-kamel-frameworks-css-css-logo.png" alt="css" width="100" height="auto" /></td>
+    </tr>
+</table>

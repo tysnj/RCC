@@ -1,6 +1,5 @@
 /* Desktop size */
 .ordered-list-container{
-  margin-top: 300px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -73,10 +72,6 @@
 
 /* Tablet size */
 @media all and (max-width: 1025px) {
-  .ordered-list-container{
-    margin-top: 200px;
-  }
-  
   .modifier-wrapper{
     height: 50px;
     align-items: baseline;
@@ -124,11 +119,6 @@
 
 /* Standard mobile size */
 @media all and (max-width: 550px) {
-  .ordered-list-container{
-    margin-top: 150px;
-    height: 100vh;
-  }
-  
   .modifier-wrapper{
     height: 30px;
   }
