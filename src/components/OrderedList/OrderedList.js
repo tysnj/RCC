@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useStickyState } from '../../hooks/useStickyState';
-import { mapListItems } from './OrderedList.functions';
 import { Order } from '../../constants/order';
 import Input from '../Input/';
 import Button from '../Button/';
+import List from './List'
 import './OrderedList.css';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -33,9 +33,9 @@ const OrderedList = () => {
     } 
   }
 
-  const handleListOrder = (direction) => { // toggles ascending/descending
-    if (direction === Order.ASCENDING) return setListOrder(Order.DESCENDING);
-    if (direction === Order.DESCENDING) return setListOrder(Order.ASCENDING);
+  const handleListOrder = () => { // toggles ascending/descending
+    if (listOrder === Order.ASCENDING) return setListOrder(Order.DESCENDING);
+    if (listOrder === Order.DESCENDING) return setListOrder(Order.ASCENDING);
   } 
   
   const handleClear = () => { // resets list and input field
@@ -45,7 +45,7 @@ const OrderedList = () => {
 
   return (
     <div className='ordered-list-container'>
-      <div className='modifier-wrapper'>
+      <div className='modifier-container'>
         <Input
           placeholder='Press enter to submit item'
           controlledValue={newItem}
@@ -64,10 +64,12 @@ const OrderedList = () => {
           label='Clear List'
         />
       </div>
-      <div className='list-wrapper'>
-        <ul className='list'>
-          {list.length > 0 && mapListItems(list, listOrder, 'value')}
-        </ul> 
+      <div className='list-container'>
+        <List
+          data={list}
+          sort={listOrder}
+          category='value'
+        />
       </div>
     </div>
   )

@@ -1,0 +1,37 @@
+/* Desktop size */
+.list-wrapper{
+  width: 100%;
+}
+
+.list-item{
+  font-size: 24px;
+}
+
+/* Tablet size */
+@media all and (max-width: 1025px) {
+  .list-wrapper{
+    width: 100%;
+  }
+
+  .list-item{
+    font-size: 24px;
+  }
+}
+
+/* Standard mobile size */
+@media all and (max-width: 550px) {
+  .list-wrapper{
+    width: 100%;
+  }
+
+  .list-item{
+    font-size: 14px;
+  }
+}
+
+/* Slim mobile size */
+@media all and (max-width: 320px) {
+  .list-item{
+    font-size: 12px;
+  }
+}

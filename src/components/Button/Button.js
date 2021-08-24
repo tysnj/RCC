@@ -6,7 +6,7 @@ const Button = ({className, callBack, data, label}) => {
   
   return (
     <span className='button-wrapper'>
-      <button className={className} onClick={() => callBack(data)}>
+      <button className={className} onClick={() => callBack()}>
         {data === Order.ASCENDING ? '↓' : data === Order.DESCENDING ? '↑' : label}
       </button>
     </span>
