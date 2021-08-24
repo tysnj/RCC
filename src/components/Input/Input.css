@@ -1,0 +1,44 @@
+/* Desktop size */
+.input-wrapper{
+  padding: 5px;
+}
+
+.input-field{
+  width: 400px;
+  height: 35px;
+  font-size: 24px;
+}
+
+/* Tablet size */
+@media all and (max-width: 1025px) {   
+  .input-wrapper{
+    padding: 4px;
+  }
+  
+  .input-field{
+    height: 35px;
+    font-size: 24px;
+  }
+}
+
+/* Standard mobile size */
+@media all and (max-width: 550px) {
+  .input-wrapper{
+    padding: 3px;
+  }
+  
+  .input-field{
+    width: 200px;
+    height: 35px;
+    font-size: 14px;
+  }
+}
+
+/* Slim mobile size */
+@media all and (max-width: 320px) {
+  .input-field{
+    width: 160px;
+    height: 35px;
+    font-size: 11px;
+  }
+}

@@ -1,11 +1,12 @@
 import React from 'react'
+import './Input.css';
 
-const Input = ({className, placeholder, controlledValue, forwardedRef, typeAction, submitAction}) => {
+const Input = ({placeholder, controlledValue, forwardedRef, typeAction, submitAction}) => {
   
   return (
     <span className='input-wrapper'>
       <input
-        className={className}
+        className='input-field'
         placeholder={placeholder}
         value={controlledValue}
         ref={forwardedRef}

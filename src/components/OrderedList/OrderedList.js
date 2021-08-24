@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useStickyState } from '../../hooks/useStickyState';
 import { mapListItems } from './OrderedList.functions';
 import { Order } from '../../constants/order';
-import Input from '../Input/Input'
+import Input from '../Input/';
+import Button from '../Button/';
 import './OrderedList.css';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -45,28 +46,23 @@ const OrderedList = () => {
   return (
     <div className='ordered-list-container'>
       <div className='modifier-wrapper'>
-          <Input
-            className='input-field'
-            placeholder='Press enter to submit item'
-            controlledValue={newItem}
-            forwardedRef={inputField}
-            typeAction={handleChange}
-            submitAction={handleSubmit}
-          />
-        <span className='button-wrapper'>
-          <button 
-            className='sort-list-button'
-            onClick={() => handleListOrder(listOrder)}
-          >{listOrder === Order.ASCENDING ? '↓' : '↑'}
-          </button>
-        </span>
-        <span className='button-wrapper'>
-          <button
-            className='clear-list-button' 
-            onClick={() => handleClear()}
-          >Clear List
-          </button>
-        </span>
+        <Input
+          placeholder='Press enter to submit item'
+          controlledValue={newItem}
+          forwardedRef={inputField}
+          typeAction={handleChange}
+          submitAction={handleSubmit}
+        />
+        <Button 
+          className='sort-list-button'
+          callBack={handleListOrder}
+          data={listOrder}
+        />
+        <Button
+          className='clear-list-button' 
+          callBack={handleClear}
+          label='Clear List'
+        />
       </div>
       <div className='list-wrapper'>
         <ul className='list'>
