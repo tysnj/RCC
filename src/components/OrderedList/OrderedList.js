@@ -1,83 +1,63 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useStickyState } from '../../hooks/useStickyState';
+import { mapListItems } from './OrderedList.functions';
+import { Order } from '../../constants/order';
+import Input from '../Input/Input'
 import './OrderedList.css';
+import { v4 as uuidv4 } from 'uuid';
 
 const OrderedList = () => {
-  const useStickyState = (defaultValue, key) => { // gets local storage
-    const [value, setValue] = useState(() => {
-      const stickyValue = window.localStorage.getItem(key);
-      return stickyValue !== null
-        ? JSON.parse(stickyValue)
-        : defaultValue;
-    });
-    useEffect(() => { // sets local storage
-      window.localStorage.setItem(key, JSON.stringify(value));
-    }, [key, value]);
-    return [value, setValue];
-  }
   // state and ref
-  const [list, setList] = useStickyState({}, 'currentList')
+  const [list, setList] = useStickyState([], 'list')
   const [newItem, setNewItem] = useState('')
-  const [isDesc, setIsDesc] = useStickyState(false, 'isDesc')
+  const [listOrder, setListOrder] = useStickyState(Order.ASCENDING, 'listOrder')
   const inputField = useRef(null);
 
   useEffect(() => { // keeps input field in focus
     inputField.current.focus()
-  },[isDesc, list])
+  },[listOrder, list])
 
   const handleChange = (e) => setNewItem(e.target.value) // controls form
 
   const handleSubmit = (e) => { // adds item to object store and resets input field
     if (e.key === 'Enter' && newItem.length) {
-      setList({...list, [`item-${Object.keys(list).length+1}`]: newItem})   
+      const timestamp = new Date()
+      const newItemObj = {
+        createdAt: timestamp.toGMTString(),
+        id: uuidv4(),
+        value: newItem
+      }
+      setList([...list, newItemObj])   
       setNewItem('')
     } 
   }
 
-  const handleSort = () => setIsDesc(!isDesc) // toggles ascending/descending
+  const handleListOrder = (direction) => { // toggles ascending/descending
+    if (direction === Order.ASCENDING) return setListOrder(Order.DESCENDING);
+    if (direction === Order.DESCENDING) return setListOrder(Order.ASCENDING);
+  } 
   
   const handleClear = () => { // resets list and input field
-    setList({})
+    setList([])
     setNewItem('')
-  }
-
-  const mapListItems = () => {
-    if (isDesc) { // sorts descending
-      return Object.entries(list)
-      .sort((a, b) => a[1].toLowerCase() > b[1].toLowerCase() ? -1 : 1)
-      .map(item => (
-        <li className='list-item' key={item[0]}>
-          {item[1]}
-        </li>
-      ))
-    } else { // sorts ascending
-      return Object.entries(list)
-      .sort((a, b) => a[1].toLowerCase() < b[1].toLowerCase() ? -1 : 1)
-      .map(item => (
-        <li className='list-item' key={item[0]}>
-          {item[1]}
-        </li>
-      ))
-    }
   }
 
   return (
     <div className='ordered-list-container'>
       <div className='modifier-wrapper'>
-        <span className='input-wrapper'>
-          <input
+          <Input
             className='input-field'
             placeholder='Press enter to submit item'
-            value={newItem}
-            ref={inputField}
-            onChange={(e) => handleChange(e)}
-            onKeyDown={(e) => handleSubmit(e)}
+            controlledValue={newItem}
+            forwardedRef={inputField}
+            typeAction={handleChange}
+            submitAction={handleSubmit}
           />
-        </span>
         <span className='button-wrapper'>
           <button 
             className='sort-list-button'
-            onClick={() => handleSort()}
-          >{isDesc ? '↑' : '↓'}
+            onClick={() => handleListOrder(listOrder)}
+          >{listOrder === Order.ASCENDING ? '↓' : '↑'}
           </button>
         </span>
         <span className='button-wrapper'>
@@ -90,7 +70,7 @@ const OrderedList = () => {
       </div>
       <div className='list-wrapper'>
         <ul className='list'>
-          {Object.keys(list).length > 0 && mapListItems()}
+          {list.length > 0 && mapListItems(list, listOrder, 'value')}
         </ul> 
       </div>
     </div>
