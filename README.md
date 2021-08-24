@@ -1,9 +1,10 @@
 # REACT Coding Challenge
 
+<a href="https://tmcnutt-veritone.surge.sh/" target="_blank">Check it out here!</a>
 
 ## Overview
 
-OrderedList is a component which implements an alphabetically sorted list. Including one button which enables the user to sort either in ascending or descending order, and a second button to permit the list to be cleared.
+OrderedList is a component which implements an alphabetically sorted list; including one button which enables the user to sort either in ascending or descending order, and a second button to permit the list to be cleared.
 
 - After typing the new item, submit with the 'Enter' key.
 - Sort between ascending (↓) and descending (↑) order by clicking the sorting button.
