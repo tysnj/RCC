@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.modifier-wrapper{
+.modifier-container{
   width: 100%;
   height: 55px;
   display: flex;
@@ -16,53 +16,13 @@
   align-content: center;
 }
 
-.input-wrapper{
-  padding: 5px;
-}
-
-.input-field{
-  width: 400px;
-  height: 35px;
-  font-size: 24px;
-}
-
-.button-wrapper{
-  height: 100%;
-  padding: 5px;
-}
-
-.button-wrapper:hover{
-  border-bottom: 2px solid black; 
-  cursor: pointer;
-}
-
-.sort-list-button{
-  background-color: #2B78D7;  
-}
-
-.clear-list-button{
-  background-color: #F03A18;
-}
-
-.sort-list-button,
-.clear-list-button{
-  color: white;
-  font-size: 23px;
-  font-weight: 600;
-}
-
-.sort-list-button:hover,
-.clear-list-button{
-  cursor: pointer;
-}
-
-.list-wrapper{
+.list-container{
   margin-top: 10px;
   padding: 5px;
   width: 500px;
 }
 
-.list{
+.list-wrapper{
   width: 100%;
 }
 
@@ -72,43 +32,18 @@
 
 /* Tablet size */
 @media all and (max-width: 1025px) {
-  .modifier-wrapper{
+  .modifier-container{
     height: 50px;
     align-items: baseline;
   }
   
-  .input-wrapper{
-    padding: 4px;
-  }
-  
-  .input-field{
-    height: 35px;
-    font-size: 24px;
-  }
-  
-  .button-wrapper{
-    padding: 4px;
-  }
-  
-  .sort-list-button,
-  .clear-list-button{
-    font-size: 20px;
-    font-weight: 700;
-    height: 35px;
-  }
-
-  .clear-list-button{
-    width: 100px;
-    font-size: 17px;
-  }
-  
-  .list-wrapper{
+  .list-container{
     margin-top: 10px;
     padding: 5px;
     width: 400px;
   }
   
-  .list{
+  .list-wrapper{
     width: 100%;
   }
 
@@ -119,45 +54,17 @@
 
 /* Standard mobile size */
 @media all and (max-width: 550px) {
-  .modifier-wrapper{
+  .modifier-container{
     height: 30px;
   }
-  
-  .input-wrapper{
-    padding: 3px;
-  }
-  
-  .input-field{
-    width: 200px;
-    height: 35px;
-    font-size: 14px;
-  }
-  
-  .button-wrapper{
-    padding: 3px;
-  }
-  
-  .button-wrapper:hover{
-    border-bottom: 1px solid black; 
-  }
-  
-  .clear-list-button{
-    width: 85px;
-  }
-  
-  .sort-list-button,
-  .clear-list-button{
-    font-size: 14px;
-    font-weight: 600;
-  }
-  
-  .list-wrapper{
+
+  .list-container{
     margin-top: 20px;
     padding: 5px;
     width: 300px;
   }
   
-  .list{
+  .list-wrapper{
     width: 100%;
   }
 
@@ -168,28 +75,7 @@
 
 /* Slim mobile size */
 @media all and (max-width: 320px) {
-  .input-field{
-    width: 160px;
-    height: 35px;
-    font-size: 11px;
-  }
-  
-  .button-wrapper{
-    padding: 3px;
-    height: 40px;
-  }
-
-  .sort-list-button,
-  .clear-list-button{
-    font-size: 12px;
-    font-weight: 600;
-  }
-  
-  .clear-list-button{
-    width: 75px;
-  }
-
-  .list-wrapper{
+   .list-container{
     margin-top: 25px;
     padding: 2px;
     width: 90%;

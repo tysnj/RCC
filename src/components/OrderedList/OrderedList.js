@@ -1,100 +1,87 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useStickyState } from '../../hooks/useStickyState';
+import { Order } from '../../constants/order';
+import { sortListItems } from './OrderedList.functions';
+import FlexContainer from '../FlexContainer/';
+import FormWrapper from '../FormWrapper/';
+import Input from '../Input/';
+import Button from '../Button/';
+import UnorderedList from './List/UnorderedList';
+import ListItem from './List/ListItem';
 import './OrderedList.css';
+import { v4 as uuidv4 } from 'uuid';
 
 const OrderedList = () => {
-  const useStickyState = (defaultValue, key) => { // gets local storage
-    const [value, setValue] = useState(() => {
-      const stickyValue = window.localStorage.getItem(key);
-      return stickyValue !== null
-        ? JSON.parse(stickyValue)
-        : defaultValue;
-    });
-    useEffect(() => { // sets local storage
-      window.localStorage.setItem(key, JSON.stringify(value));
-    }, [key, value]);
-    return [value, setValue];
-  }
-  // state and ref
-  const [list, setList] = useStickyState({}, 'currentList')
+  const [list, setList] = useStickyState([], 'list')
   const [newItem, setNewItem] = useState('')
-  const [isDesc, setIsDesc] = useStickyState(false, 'isDesc')
+  const [listOrder, setListOrder] = useStickyState(Order.ASCENDING, 'listOrder')
   const inputField = useRef(null);
 
   useEffect(() => { // keeps input field in focus
     inputField.current.focus()
-  },[isDesc, list])
+  },[listOrder, list])
 
-  const handleChange = (e) => setNewItem(e.target.value) // controls form
+  const handleChangeAction = (e) => setNewItem(e.target.value) // controls form
 
-  const handleSubmit = (e) => { // adds item to object store and resets input field
-    if (e.key === 'Enter' && newItem.length) {
-      setList({...list, [`item-${Object.keys(list).length+1}`]: newItem})   
+  const handleSubmitAction = (e) => { // adds item to object store and resets input field 
+    if (e.key === 'Enter' && newItem.split(' ').join('').length !== 0) {
+      const timestamp = new Date()
+      const newItemObj = {
+        createdAt: timestamp.toGMTString(),
+        id: uuidv4(),
+        value: newItem
+      }
+      setList([...list, newItemObj])   
       setNewItem('')
     } 
   }
 
-  const handleSort = () => setIsDesc(!isDesc) // toggles ascending/descending
+  const handleSortAction = () => { // toggles ascending/descending
+    if (listOrder === Order.ASCENDING) return setListOrder(Order.DESCENDING);
+    if (listOrder === Order.DESCENDING) return setListOrder(Order.ASCENDING);
+  } 
   
-  const handleClear = () => { // resets list and input field
-    setList({})
+  const handleClearAction = () => { // resets list and input field
+    setList([])
     setNewItem('')
   }
 
-  const mapListItems = () => {
-    if (isDesc) { // sorts descending
-      return Object.entries(list)
-      .sort((a, b) => a[1].toLowerCase() > b[1].toLowerCase() ? -1 : 1)
-      .map(item => (
-        <li className='list-item' key={item[0]}>
-          {item[1]}
-        </li>
-      ))
-    } else { // sorts ascending
-      return Object.entries(list)
-      .sort((a, b) => a[1].toLowerCase() < b[1].toLowerCase() ? -1 : 1)
-      .map(item => (
-        <li className='list-item' key={item[0]}>
-          {item[1]}
-        </li>
-      ))
-    }
-  }
-
   return (
-    <div className='ordered-list-container'>
-      <div className='modifier-wrapper'>
-        <span className='input-wrapper'>
-          <input
-            className='input-field'
+    <FlexContainer className='ordered-list-container'>
+      <FormWrapper>
+        <FlexContainer className='modifier-container' > 
+          <Input
             placeholder='Press enter to submit item'
-            value={newItem}
-            ref={inputField}
-            onChange={(e) => handleChange(e)}
-            onKeyDown={(e) => handleSubmit(e)}
+            controlledValue={newItem}
+            forwardedRef={inputField}
+            typeAction={handleChangeAction}
+            submitAction={handleSubmitAction}
           />
-        </span>
-        <span className='button-wrapper'>
-          <button 
+          <Button 
             className='sort-list-button'
-            onClick={() => handleSort()}
-          >{isDesc ? '↑' : '↓'}
-          </button>
-        </span>
-        <span className='button-wrapper'>
-          <button
+            title={listOrder === Order.ASCENDING ? 'Sort Desc' : 'Sort Asc'}
+            callBack={handleSortAction}
+            label={listOrder === Order.ASCENDING ? '↓' : '↑'}
+            bgColor='#2B78D7'
+          />
+          <Button
             className='clear-list-button' 
-            onClick={() => handleClear()}
-          >Clear List
-          </button>
-        </span>
-      </div>
-      <div className='list-wrapper'>
-        <ul className='list'>
-          {Object.keys(list).length > 0 && mapListItems()}
-        </ul> 
-      </div>
-    </div>
+            title='Clear List'
+            callBack={handleClearAction}
+            label='Clear List'
+            bgColor='#F03A18'
+          />
+        </FlexContainer>
+      </FormWrapper>
+      <FlexContainer className='list-container' justifyContent='flex-start' margin="15px 0px 0px 10px"> 
+        <UnorderedList>
+          {list.length > 0 && sortListItems(list, listOrder, 'value').map(item => (
+                <ListItem className='list-item' key={item.id} data={item.value}/>
+            ))}        
+        </UnorderedList>
+      </FlexContainer>
+    </FlexContainer>
   )
 }
 
-export default OrderedList
+export default OrderedList;
