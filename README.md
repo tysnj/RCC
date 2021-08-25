@@ -31,6 +31,7 @@ OrderedList is a component that implements an alphabetically sorted list; includ
 ## Reflections
 
 - Front loading work with planning, wireframing, and prototyping paired with the project board for issue tracking helped ease workflow and execution.
+- Integration tests aided with use case validation throughout the refactor/optimization process.
 - In spirit of learning and hardening best practices, I refactored the OrderedList elements into reusable components; creating a mini component library to assist solution.
 - Experimented further with inline styling and explored benefits and drawbacks alike to this method vs .css files vs styled-components; especially in regard to responsive design with the addition of breakpoints.
 - Currently without use of a database, so I've included localStorage by use of a useStickyState custom hook.
