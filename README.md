@@ -25,3 +25,9 @@ OrderedList is a component that implements an alphabetically sorted list; includ
 
 - React, React Hooks
 - Cypress
+- UUID
+
+## Reflections
+
+- In spirit of learning and hardening best practices, I refactored the OrderedList elements into reusable components; creating a mini component library to assist solution.
+- Experimented further with inline styling and explored benefits and drawbacks alike to this method vs .css files vs styled-components.
