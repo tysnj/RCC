@@ -2,7 +2,6 @@ import React from 'react';
 import './Button.css';
 
 const Button = ({className, callBack, label, type = 'button', bgColor, color }) => {
-  console.log(callBack)
   return (
     <span className='button-wrapper'>
       <button 

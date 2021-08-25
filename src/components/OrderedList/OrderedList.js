@@ -24,7 +24,6 @@ const OrderedList = () => {
   const handleChangeAction = (e) => setNewItem(e.target.value) // controls form
 
   const handleSubmitAction = (e) => { // adds item to object store and resets input field 
-    console.log('submit')
     if (e.key === 'Enter' && newItem.length) {
       const timestamp = new Date()
       const newItemObj = {
@@ -38,7 +37,6 @@ const OrderedList = () => {
   }
 
   const handleSortAction = () => { // toggles ascending/descending
-    console.log('sort')
     if (listOrder === Order.ASCENDING) return setListOrder(Order.DESCENDING);
     if (listOrder === Order.DESCENDING) return setListOrder(Order.ASCENDING);
   } 
