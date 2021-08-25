@@ -1,5 +1,5 @@
-import React from 'react'
-import './Button.css'
+import React from 'react';
+import './Button.css';
 
 const Button = ({className, callBack, label, type = 'button', bgColor, color }) => {
   console.log(callBack)
@@ -20,4 +20,4 @@ const Button = ({className, callBack, label, type = 'button', bgColor, color }) 
   )
 }
 
-export default Button
+export default Button;

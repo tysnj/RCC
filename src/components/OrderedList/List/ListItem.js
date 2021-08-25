@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const ListItem = ({className, data}) => {
   return (
@@ -8,4 +8,4 @@ const ListItem = ({className, data}) => {
   )
 }
 
-export default ListItem
+export default ListItem;

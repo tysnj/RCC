@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const UnorderedList = ({children}) => {
   return (
@@ -8,4 +8,4 @@ const UnorderedList = ({children}) => {
   )
 }
 
-export default UnorderedList
+export default UnorderedList;

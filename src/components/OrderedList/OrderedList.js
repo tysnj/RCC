@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useStickyState } from '../../hooks/useStickyState';
 import { Order } from '../../constants/order';
-import { sortListItems } from './OrderedList.functions'
+import { sortListItems } from './OrderedList.functions';
 import FlexContainer from '../FlexContainer/';
 import FormWrapper from '../FormWrapper/';
 import Input from '../Input/';
 import Button from '../Button/';
-import UnorderedList from './List/UnorderedList'
+import UnorderedList from './List/UnorderedList';
 import ListItem from './List/ListItem';
 import './OrderedList.css';
 import { v4 as uuidv4 } from 'uuid';
@@ -84,4 +84,4 @@ const OrderedList = () => {
   )
 }
 
-export default OrderedList
+export default OrderedList;

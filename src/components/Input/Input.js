@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import './Input.css';
 
 const Input = ({placeholder, controlledValue, forwardedRef, typeAction, submitAction}) => { 
@@ -16,4 +16,4 @@ const Input = ({placeholder, controlledValue, forwardedRef, typeAction, submitAc
   )
 }
 
-export default Input
+export default Input;

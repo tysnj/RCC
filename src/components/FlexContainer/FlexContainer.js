@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const FlexContainer = ({children, className, width, height, direction, justifyContent, alignItems, margin}) => {
   return (
@@ -19,4 +19,4 @@ const FlexContainer = ({children, className, width, height, direction, justifyCo
   )
 }
 
-export default FlexContainer
+export default FlexContainer;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const FormWrapper = ({children}) => {
   return (
@@ -8,4 +8,4 @@ const FormWrapper = ({children}) => {
   )
 }
 
-export default FormWrapper
+export default FormWrapper;
