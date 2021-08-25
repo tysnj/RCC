@@ -1,13 +1,11 @@
 import React from 'react'
-import { Order } from '../../constants/order';
 import './Button.css'
 
-const Button = ({className, callBack, data, label}) => {
-  
+const Button = ({className, callBack, label}) => {
   return (
     <span className='button-wrapper'>
       <button className={className} onClick={() => callBack()}>
-        {data === Order.ASCENDING ? '↓' : data === Order.DESCENDING ? '↑' : label}
+        {label}
       </button>
     </span>
   )

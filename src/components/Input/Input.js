@@ -1,8 +1,7 @@
 import React from 'react'
 import './Input.css';
 
-const Input = ({placeholder, controlledValue, forwardedRef, typeAction, submitAction}) => {
-  
+const Input = ({placeholder, controlledValue, forwardedRef, typeAction, submitAction}) => { 
   return (
     <span className='input-wrapper'>
       <input

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useStickyState } from '../../hooks/useStickyState';
+import { useStickyState } from '../../Hooks/useStickyState';
 import { Order } from '../../constants/order';
+import FormWrapper from '../FormWrapper/';
+import FlexContainer from '../FlexContainer/';
 import Input from '../Input/';
 import Button from '../Button/';
 import List from './List'
@@ -8,7 +10,6 @@ import './OrderedList.css';
 import { v4 as uuidv4 } from 'uuid';
 
 const OrderedList = () => {
-  // state and ref
   const [list, setList] = useStickyState([], 'list')
   const [newItem, setNewItem] = useState('')
   const [listOrder, setListOrder] = useStickyState(Order.ASCENDING, 'listOrder')
@@ -18,9 +19,10 @@ const OrderedList = () => {
     inputField.current.focus()
   },[listOrder, list])
 
-  const handleChange = (e) => setNewItem(e.target.value) // controls form
+  const handleChange = (e) => setNewItem(e.target.value) // controls div
 
   const handleSubmit = (e) => { // adds item to object store and resets input field
+    
     if (e.key === 'Enter' && newItem.length) {
       const timestamp = new Date()
       const newItemObj = {
@@ -45,32 +47,34 @@ const OrderedList = () => {
 
   return (
     <div className='ordered-list-container'>
-      <div className='modifier-container'>
-        <Input
-          placeholder='Press enter to submit item'
-          controlledValue={newItem}
-          forwardedRef={inputField}
-          typeAction={handleChange}
-          submitAction={handleSubmit}
-        />
-        <Button 
-          className='sort-list-button'
-          callBack={handleListOrder}
-          data={listOrder}
-        />
-        <Button
-          className='clear-list-button' 
-          callBack={handleClear}
-          label='Clear List'
-        />
-      </div>
-      <div className='list-container'>
+      <FormWrapper>
+        <FlexContainer className='modifier-container'> 
+          <Input
+            placeholder='Press enter to submit item'
+            controlledValue={newItem}
+            forwardedRef={inputField}
+            typeAction={handleChange}
+            submitAction={handleSubmit}
+          />
+          <Button 
+            className='sort-list-button'
+            callBack={handleListOrder}
+            label={listOrder === Order.ASCENDING ? '↓' : '↑'}
+          />
+          <Button
+            className='clear-list-button' 
+            callBack={handleClear}
+            label='Clear List'
+          />
+        </FlexContainer>
+      </FormWrapper>
+      <FlexContainer className='list-container' justifyContent='flex-start' margin="21px 0px 0px 15px"> 
         <List
           data={list}
           sort={listOrder}
           category='value'
         />
-      </div>
+      </FlexContainer>
     </div>
   )
 }
