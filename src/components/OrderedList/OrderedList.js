@@ -24,7 +24,7 @@ const OrderedList = () => {
   const handleChangeAction = (e) => setNewItem(e.target.value) // controls form
 
   const handleSubmitAction = (e) => { // adds item to object store and resets input field 
-    if (e.key === 'Enter' && newItem.length) {
+    if (e.key === 'Enter' && newItem.split(' ').join('').length !== 0) {
       const timestamp = new Date()
       const newItemObj = {
         createdAt: timestamp.toGMTString(),
