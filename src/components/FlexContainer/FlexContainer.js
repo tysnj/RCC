@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FlexContainer = ({children, className, width, height, direction, justifyContent, alignContent, margin}) => {
+const FlexContainer = ({children, className, width, height, direction, justifyContent, alignItems, margin}) => {
   return (
     <div
       className={className}
@@ -10,7 +10,7 @@ const FlexContainer = ({children, className, width, height, direction, justifyCo
         display: 'flex',
         flexDirection: `${direction}`,
         justifyContent: `${justifyContent}`,
-        alignContent: `${alignContent}`,
+        alignItems: `${alignItems}`,
         margin: `${margin}`
       }}  
     >

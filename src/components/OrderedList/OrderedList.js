@@ -46,9 +46,9 @@ const OrderedList = () => {
   }
 
   return (
-    <div className='ordered-list-container'>
+    <FlexContainer className='ordered-list-container'>
       <FormWrapper>
-        <FlexContainer className='modifier-container'> 
+        <FlexContainer className='modifier-container' > 
           <Input
             placeholder='Press enter to submit item'
             controlledValue={newItem}
@@ -68,14 +68,14 @@ const OrderedList = () => {
           />
         </FlexContainer>
       </FormWrapper>
-      <FlexContainer className='list-container' justifyContent='flex-start' margin="21px 0px 0px 15px"> 
+      <FlexContainer className='list-container' justifyContent='flex-start' margin="15px 0px 0px 10px"> 
         <List
           data={list}
-          sort={listOrder}
+          order={listOrder}
           category='value'
         />
       </FlexContainer>
-    </div>
+    </FlexContainer>
   )
 }
 

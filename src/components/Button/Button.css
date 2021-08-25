@@ -37,14 +37,13 @@
   
   .sort-list-button,
   .clear-list-button{
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 700;
     height: 35px;
   }
 
   .clear-list-button{
     width: 100px;
-    font-size: 17px;
   }
 }
 
