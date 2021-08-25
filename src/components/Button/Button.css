@@ -9,14 +9,6 @@
   cursor: pointer;
 }
 
-.sort-list-button{
-  background-color: #2B78D7;  
-}
-
-.clear-list-button{
-  background-color: #F03A18;
-}
-
 .sort-list-button,
 .clear-list-button{
   color: white;

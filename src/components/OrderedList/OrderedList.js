@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useStickyState } from '../../Hooks/useStickyState';
+import { useStickyState } from '../../hooks/useStickyState';
 import { Order } from '../../constants/order';
 import { sortListItems } from './OrderedList.functions'
-import FormWrapper from '../FormWrapper/';
 import FlexContainer from '../FlexContainer/';
+import FormWrapper from '../FormWrapper/';
 import Input from '../Input/';
 import Button from '../Button/';
 import UnorderedList from './List/UnorderedList'
@@ -21,9 +21,10 @@ const OrderedList = () => {
     inputField.current.focus()
   },[listOrder, list])
 
-  const handleChange = (e) => setNewItem(e.target.value) // controls div
+  const handleChangeAction = (e) => setNewItem(e.target.value) // controls form
 
-  const handleSubmit = (e) => { // adds item to object store and resets input field   
+  const handleSubmitAction = (e) => { // adds item to object store and resets input field 
+    console.log('submit')
     if (e.key === 'Enter' && newItem.length) {
       const timestamp = new Date()
       const newItemObj = {
@@ -36,12 +37,13 @@ const OrderedList = () => {
     } 
   }
 
-  const handleListOrder = () => { // toggles ascending/descending
+  const handleSortAction = () => { // toggles ascending/descending
+    console.log('sort')
     if (listOrder === Order.ASCENDING) return setListOrder(Order.DESCENDING);
     if (listOrder === Order.DESCENDING) return setListOrder(Order.ASCENDING);
   } 
   
-  const handleClear = () => { // resets list and input field
+  const handleClearAction = () => { // resets list and input field
     setList([])
     setNewItem('')
   }
@@ -54,32 +56,28 @@ const OrderedList = () => {
             placeholder='Press enter to submit item'
             controlledValue={newItem}
             forwardedRef={inputField}
-            typeAction={handleChange}
-            submitAction={handleSubmit}
+            typeAction={handleChangeAction}
+            submitAction={handleSubmitAction}
           />
           <Button 
             className='sort-list-button'
-            callBack={handleListOrder}
+            callBack={handleSortAction}
             label={listOrder === Order.ASCENDING ? '↓' : '↑'}
+            bgColor='#2B78D7'
           />
           <Button
             className='clear-list-button' 
-            callBack={handleClear}
+            callBack={handleClearAction}
             label='Clear List'
+            bgColor='#F03A18'
           />
         </FlexContainer>
       </FormWrapper>
       <FlexContainer className='list-container' justifyContent='flex-start' margin="15px 0px 0px 10px"> 
-        <UnorderedList
-          data={list}
-          order={listOrder}
-          category='value'
-        >
-          {
-            list.length > 0 && sortListItems(list, listOrder, 'value').map(item => (
+        <UnorderedList>
+          {list.length > 0 && sortListItems(list, listOrder, 'value').map(item => (
                 <ListItem className='list-item' key={item.id} data={item.value}/>
-            ))
-          }        
+            ))}        
         </UnorderedList>
       </FlexContainer>
     </FlexContainer>

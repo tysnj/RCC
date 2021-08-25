@@ -1,10 +1,19 @@
 import React from 'react'
 import './Button.css'
 
-const Button = ({className, callBack, label}) => {
+const Button = ({className, callBack, label, type = 'button', bgColor, color }) => {
+  console.log(callBack)
   return (
     <span className='button-wrapper'>
-      <button className={className} onClick={() => callBack()}>
+      <button 
+        type={type} 
+        className={className} 
+        onClick={() => callBack()}
+        style={{
+          backgroundColor: `${bgColor}`,
+          color: `${color}` || '#fff'
+        }}
+      >
         {label}
       </button>
     </span>
