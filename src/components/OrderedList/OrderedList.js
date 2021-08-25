@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useStickyState } from '../../Hooks/useStickyState';
 import { Order } from '../../constants/order';
+import { sortListItems } from './OrderedList.functions'
 import FormWrapper from '../FormWrapper/';
 import FlexContainer from '../FlexContainer/';
 import Input from '../Input/';
 import Button from '../Button/';
-import List from './List'
+import UnorderedList from './List/UnorderedList'
+import ListItem from './List/ListItem';
 import './OrderedList.css';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -21,8 +23,7 @@ const OrderedList = () => {
 
   const handleChange = (e) => setNewItem(e.target.value) // controls div
 
-  const handleSubmit = (e) => { // adds item to object store and resets input field
-    
+  const handleSubmit = (e) => { // adds item to object store and resets input field   
     if (e.key === 'Enter' && newItem.length) {
       const timestamp = new Date()
       const newItemObj = {
@@ -69,11 +70,17 @@ const OrderedList = () => {
         </FlexContainer>
       </FormWrapper>
       <FlexContainer className='list-container' justifyContent='flex-start' margin="15px 0px 0px 10px"> 
-        <List
+        <UnorderedList
           data={list}
           order={listOrder}
           category='value'
-        />
+        >
+          {
+            list.length > 0 && sortListItems(list, listOrder, 'value').map(item => (
+                <ListItem className='list-item' key={item.id} data={item.value}/>
+            ))
+          }        
+        </UnorderedList>
       </FlexContainer>
     </FlexContainer>
   )
