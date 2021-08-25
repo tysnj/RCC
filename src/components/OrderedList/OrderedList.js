@@ -59,12 +59,14 @@ const OrderedList = () => {
           />
           <Button 
             className='sort-list-button'
+            title={listOrder === Order.ASCENDING ? 'Sort Desc' : 'Sort Asc'}
             callBack={handleSortAction}
             label={listOrder === Order.ASCENDING ? '↓' : '↑'}
             bgColor='#2B78D7'
           />
           <Button
             className='clear-list-button' 
+            title='Clear List'
             callBack={handleClearAction}
             label='Clear List'
             bgColor='#F03A18'
